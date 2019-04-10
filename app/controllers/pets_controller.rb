@@ -13,7 +13,7 @@ class PetsController < ApplicationController
   post '/pets' do
     @pet = Pet.create(params[:pet])
     if params[:pet][:owner_id] == nil
-      @owner = Owner.create(name: params["owner_name"])
+      @owner = Owner.create(name: params["owner"]["name"])
       @pet.owner = @owner
     end
   #  binding.pry
@@ -42,7 +42,7 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     #binding.pry
     if !params["owner"]["name"] == ""
-      @pet.owner = Owner.create(name: params["owner_name"])
+      @pet.owner = Owner.create(name: params["owner"]["name"])
     end
     @pet.update(params["pet"])
     redirect to "pets/#{@pet.id}"
