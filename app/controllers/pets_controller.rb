@@ -40,7 +40,7 @@ class PetsController < ApplicationController
     #####
 #binding.pry
     @pet = Pet.find(params[:id])
-    binding.pry
+    #binding.pry
     if !params["owner_name"] == ""
       @pet.owner = Owner.create(name: params["owner_name"])
     end
