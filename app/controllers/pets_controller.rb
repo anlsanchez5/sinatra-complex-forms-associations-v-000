@@ -40,11 +40,10 @@ class PetsController < ApplicationController
     #####
 #binding.pry
     @pet = Pet.find(params[:id])
-    @pet.update(params["pet"])
+    @pet.update(params["pet"]);binding.pry
     if !params["owner"]["name"] == ""
       @owner = Owner.create(name: params["owner"]["name"])
       @pet.owner = @owner
-      binding.pry
       @pet.update(owner_id: @owner)
     end
     redirect to "pets/#{@pet.id}"
