@@ -43,7 +43,6 @@ class PetsController < ApplicationController
     @pet.update(params["pet"]);binding.pry
     if !params["owner"]["name"] == ""
       @owner = Owner.create(name: params["owner"]["name"])
-      @pet.owner = @owner
       @pet.update(owner_id: @owner.id)
     end
     redirect to "pets/#{@pet.id}"
