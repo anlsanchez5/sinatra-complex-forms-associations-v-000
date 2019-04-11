@@ -11,6 +11,7 @@ class PetsController < ApplicationController
   end
 
   post '/pets' do
+    binding.pry
     @pet = Pet.create(params[:pet])
     if params["owner"]["name"] != ""
       @owner = Owner.create(name: params["owner"]["name"])
